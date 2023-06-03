@@ -61,6 +61,10 @@ title varchar(30)
 insert into Category values('S110','Classic');
 insert into Category values('S121','Pop-Rock');
 insert into Category values('S124','Movie Soundtrack');
+--inserting relatable data as given schema dosent show category and music table categoryCode relation:
+insert into Category values('C11','Classic');
+insert into Category values('C12','Pop-Rock');
+insert into Category values('C13','Movie Soundtrack');
 --check  data is inserted or not
 select *from Category;
 --1.The music id,the title and the categoryCode of all the music in the database,ordered by title.
@@ -71,6 +75,11 @@ select count(CategoryCode) from (select musicDownload.userID,musicDownload.music
 Category.title from musicDownload inner join music on
 musicDownload.musicid=music.musicid inner join Category on
 Category.categoryCode = music.categoryCode) as Count where categoryCode = 'S121';
+--The number of users who downloaded 'Pop-Rock' category of music as C12.
+select count(CategoryCode) from (select musicDownload.userID,musicDownload.musicid,music.categoryCode,
+Category.title from musicDownload inner join music on
+musicDownload.musicid=music.musicid inner join Category on
+Category.categoryCode = music.categoryCode) as Count where categoryCode = 'C12';
 --The number of music downloads for each of the categories. The result listing should 
 --include the titles of the categories and the number of music downloads for each category 
 --title.
@@ -116,9 +125,9 @@ insert into record2 values(10168 ,1, 96.66, 36, 3479.66, 4, 10, 2006);
 select *from record2
 --groupby
 SELECT OrderNo, ProductNo, Price, QtrId, YearId, MonthId, SUM(Quantity)
-FROM record1
+FROM record2
 GROUP BY OrderNo, ProductNo, Price, QtrId, YearId, MonthId;
------STW7086CEM -DATA MANAGEMENT SYSTEM--SUBASH GAUTAM-MSC_BATCH 2----230083
+-----STW7086CEM -DATA MANAGEMENT SYSTEM--SUBASH GAUTAM-MSC_BATCH 2----230083----
 
 
 
