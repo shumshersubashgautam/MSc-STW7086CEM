@@ -57,10 +57,7 @@ create table Category(
 categoryCode varchar(5),
 title varchar(30)
 );
---Now inserting data into the Category table
-insert into Category values('S110','Classic');
-insert into Category values('S121','Pop-Rock');
-insert into Category values('S124','Movie Soundtrack');
+
 --inserting relatable data as given schema dosent show category and music table categoryCode relation:
 insert into Category values('C11','Classic');
 insert into Category values('C12','Pop-Rock');
